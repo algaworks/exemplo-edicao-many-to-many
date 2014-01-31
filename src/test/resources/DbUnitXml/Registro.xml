@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<dataset>
+	<registro codigo="1" matricula="1111" codigo_imovel="1" />
+	<registro codigo="2" matricula="2222" codigo_imovel="2" />
+	<registro codigo="3" matricula="3333" codigo_imovel="3" />
+</dataset>

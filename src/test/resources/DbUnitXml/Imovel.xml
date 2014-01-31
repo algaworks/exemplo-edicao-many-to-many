@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<dataset>
+	<imovel codigo="1" descricao="Casa" />
+	<imovel codigo="2" descricao="Apto" />
+	<imovel codigo="3" descricao="Predio" />
+</dataset>
