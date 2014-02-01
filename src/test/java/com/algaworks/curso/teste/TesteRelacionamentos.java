@@ -25,10 +25,15 @@ public class TesteRelacionamentos {
 		helper.cleanAndInsert();
 		
 		this.manager = JPAHelper.currentEntityManager();
+		
+		if (!this.manager.getTransaction().isActive()) {
+			this.manager.getTransaction().begin();
+		}
 	}
 	
 	@After
 	public void end() {
+		this.manager.getTransaction().commit();
 	}
 	
 	@Test
@@ -44,4 +49,15 @@ public class TesteRelacionamentos {
 		this.manager.merge(joao);
 	}
 	
+	@Test
+	public void deveRemoverTodosImoveis() {
+		Corretor joao = this.manager.find(Corretor.class, 1L);
+		joao.setNome("João da Silva");
+		
+		System.out.println(joao.getImoveis().size());
+		
+		joao.getImoveis().clear();
+		
+		this.manager.merge(joao);
+	}
 }
