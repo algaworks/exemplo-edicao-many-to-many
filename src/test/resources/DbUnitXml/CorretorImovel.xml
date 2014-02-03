@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-<dataset>
-	<corretor_imovel codigo_corretor="1" codigo_imovel="1"/>
-	<corretor_imovel codigo_corretor="1" codigo_imovel="2"/>
-	<corretor_imovel codigo_corretor="1" codigo_imovel="3"/>
-	<corretor_imovel codigo_corretor="2" codigo_imovel="1"/>
-	<corretor_imovel codigo_corretor="2" codigo_imovel="2"/>
-</dataset>

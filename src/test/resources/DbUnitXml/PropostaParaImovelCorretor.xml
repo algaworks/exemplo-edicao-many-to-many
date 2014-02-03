@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<dataset>
+	<proposta_para_imovel_corretor codigo_proposta="1" codigo_corretor="1" codigo_imovel="1"/>
+	<proposta_para_imovel_corretor codigo_proposta="1" codigo_corretor="1" codigo_imovel="2"/>
+	<proposta_para_imovel_corretor codigo_proposta="2" codigo_corretor="2" codigo_imovel="2"/>
+</dataset>

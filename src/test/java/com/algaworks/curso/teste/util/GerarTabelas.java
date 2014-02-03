@@ -16,6 +16,7 @@ public class GerarTabelas {
 		// Executando esse código antes dos testes, irá fazer o hibernate gerar as tabelas a partir do arquivo persistence.xml
 		EntityManager manager = GerarTabelas.createEntityManager();
 		manager.close();
+		System.out.println(">>>>> Tabelas geradas com sucesso! <<<<<<<");
 		System.exit(0);
 		
 	}

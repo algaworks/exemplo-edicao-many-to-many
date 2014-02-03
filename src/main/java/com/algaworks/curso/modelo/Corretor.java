@@ -47,7 +47,7 @@ public class Corretor implements Serializable {
 	}
 
 	@ManyToMany
-	@JoinTable(name="corretor_imovel"
+	@JoinTable(name="imovel_do_corretor"
 			, joinColumns=@JoinColumn(name="codigo_corretor")
 			, inverseJoinColumns=@JoinColumn(name="codigo_imovel"))
 	public List<Imovel> getImoveis() {

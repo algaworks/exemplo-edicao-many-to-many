@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<dataset>
+	<imovel_do_corretor codigo_corretor="1" codigo_imovel="1" />
+	<imovel_do_corretor codigo_corretor="1" codigo_imovel="2" />
+	<imovel_do_corretor codigo_corretor="2" codigo_imovel="2" />
+	<imovel_do_corretor codigo_corretor="2" codigo_imovel="3" />
+</dataset>

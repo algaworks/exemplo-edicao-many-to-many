@@ -1,31 +1,27 @@
 package com.algaworks.curso.modelo;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="registro")
-public class Registro implements Serializable {
+@Table(name="proposta")
+public class Proposta implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
 	private Long codigo;
-	private String matricula;
-	private Imovel imovel;
-	
-	public Registro() {
-	}
-	
-	public Registro(String matricula) {
-		this.matricula = matricula;
-	}
+	private BigDecimal valor;
+	private List<ImovelDoCorretor> imoveisDoCorretor;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -36,22 +32,24 @@ public class Registro implements Serializable {
 		this.codigo = codigo;
 	}
 	
-	public String getMatricula() {
-		return matricula;
+	public BigDecimal getValor() {
+		return valor;
 	}
-	public void setMatricula(String matricula) {
-		this.matricula = matricula;
+	public void setValor(BigDecimal valor) {
+		this.valor = valor;
 	}
-
-	@ManyToOne
-	@JoinColumn(name="codigo_imovel")
-	public Imovel getImovel() {
-		return imovel;
+	
+	@ManyToMany
+	@JoinTable(name="proposta_para_imovel_corretor"
+			, joinColumns=@JoinColumn(name="codigo_proposta")
+			, inverseJoinColumns={@JoinColumn(name="codigo_corretor"), @JoinColumn(name="codigo_imovel")})
+	public List<ImovelDoCorretor> getImoveisDoCorretor() {
+		return imoveisDoCorretor;
 	}
-	public void setImovel(Imovel imovel) {
-		this.imovel = imovel;
+	public void setImoveisDoCorretor(List<ImovelDoCorretor> imoveisDoCorretor) {
+		this.imoveisDoCorretor = imoveisDoCorretor;
 	}
-
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -68,7 +66,7 @@ public class Registro implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Registro other = (Registro) obj;
+		Proposta other = (Proposta) obj;
 		if (codigo == null) {
 			if (other.codigo != null)
 				return false;
@@ -76,5 +74,5 @@ public class Registro implements Serializable {
 			return false;
 		return true;
 	}
-	
+
 }
