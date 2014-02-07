@@ -1,16 +1,14 @@
 package com.algaworks.curso.modelo;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -21,7 +19,8 @@ public class Corretor implements Serializable {
 	
 	private Long codigo;
 	private String nome;
-	private List<Imovel> imoveis = new ArrayList<>();
+//	private List<Imovel> imoveis = new ArrayList<>();
+	private List<ImovelDoCorretor> imoveisDoCorretor;
 
 	public Corretor() {
 	}
@@ -46,7 +45,7 @@ public class Corretor implements Serializable {
 		this.nome = nome;
 	}
 
-	@ManyToMany
+	/*@ManyToMany
 	@JoinTable(name="imovel_do_corretor"
 			, joinColumns=@JoinColumn(name="codigo_corretor")
 			, inverseJoinColumns=@JoinColumn(name="codigo_imovel"))
@@ -55,6 +54,14 @@ public class Corretor implements Serializable {
 	}
 	public void setImoveis(List<Imovel> imoveis) {
 		this.imoveis = imoveis;
+	}*/
+	
+	@OneToMany(mappedBy="id.corretor", cascade=CascadeType.MERGE)
+	public List<ImovelDoCorretor> getImoveisDoCorretor() {
+		return imoveisDoCorretor;
+	}
+	public void setImoveisDoCorretor(List<ImovelDoCorretor> imoveisDoCorretor) {
+		this.imoveisDoCorretor = imoveisDoCorretor;
 	}
 	
 	@Override

@@ -7,7 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -18,7 +18,8 @@ public class Imovel implements Serializable {
 	
 	private Long codigo;
 	private String descricao;
-	private List<Corretor> corretores;
+	//private List<Corretor> corretores;
+	private List<ImovelDoCorretor> imoveisDoCorretor;
 	
 	public Imovel() {
 	}
@@ -43,14 +44,22 @@ public class Imovel implements Serializable {
 		this.descricao = descricao;
 	}
 
-	@ManyToMany(mappedBy="imoveis")
+	/*@ManyToMany(mappedBy="imoveis")
 	public List<Corretor> getCorretores() {
 		return corretores;
 	}
 	public void setCorretores(List<Corretor> corretores) {
 		this.corretores = corretores;
-	}
+	}*/
 
+	@OneToMany(mappedBy="id.imovel")
+	public List<ImovelDoCorretor> getImoveisDoCorretor() {
+		return imoveisDoCorretor;
+	}
+	public void setImoveisDoCorretor(List<ImovelDoCorretor> imoveisDoCorretor) {
+		this.imoveisDoCorretor = imoveisDoCorretor;
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

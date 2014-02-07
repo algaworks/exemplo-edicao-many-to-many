@@ -8,6 +8,8 @@ import org.junit.Test;
 
 import com.algaworks.curso.modelo.Corretor;
 import com.algaworks.curso.modelo.Imovel;
+import com.algaworks.curso.modelo.ImovelDoCorretor;
+import com.algaworks.curso.modelo.ImovelDoCorretorId;
 import com.jintegrity.core.JIntegrity;
 import com.jintegrity.helper.JPAHelper;
 
@@ -44,20 +46,21 @@ public class TesteRelacionamentos {
 		Imovel comercial = new Imovel("Comercial");
 		this.manager.persist(comercial);
 		
-		joao.getImoveis().add(comercial);
+		ImovelDoCorretor imovelDoCorretor = new ImovelDoCorretor();
+		ImovelDoCorretorId idImovelDoCorretor = new ImovelDoCorretorId();
+		idImovelDoCorretor.setCorretor(joao);
+		idImovelDoCorretor.setImovel(comercial);
+		imovelDoCorretor.setId(idImovelDoCorretor);
+
+		this.manager.persist(imovelDoCorretor);
+		
+		// Se quiser usar como abaixo, tem que adicionar cascade=CascadeType.MERGE
+//		joao.getImoveisDoCorretor().add(imovelDoCorretor);
+
+		// Da forma abaixo não é possível.
+//		joao.getImoveis().add(comercial);
 		
 		this.manager.merge(joao);
 	}
 	
-	@Test
-	public void deveRemoverTodosImoveis() {
-		Corretor joao = this.manager.find(Corretor.class, 1L);
-		joao.setNome("João da Silva");
-		
-		System.out.println(joao.getImoveis().size());
-		
-		joao.getImoveis().clear();
-		
-		this.manager.merge(joao);
-	}
 }
